@@ -9,6 +9,7 @@ echo "  g : ROS 2 Galactic"
 echo "  r : ROS 2 Rolling"
 echo "  n : No ROS configuration"
 read ros_type
+#ros_type="r"
 
 if [ $ros_type == 1 ]; then
     echo "Defaulting to ROS Noetic"
@@ -26,8 +27,7 @@ fi
 if [ ! -z "$ROS_DISTRO" ]; then
     echo "Selecting ROS $ROS_DISTRO"
     source /opt/ros/$ROS_DISTRO/setup.bash
-    export ROS_HOME=$HOME/code/ros/$ROS_DISTRO
     export ROS_LOG_DIR=$ROS_HOME/log
-    source $ROS_HOME/install/setup.bash
-    cd $ROS_HOME
+    source $HOME/code/ros/$ROS_DISTRO/install/setup.bash
+    cd $HOME/code/ros/$ROS_DISTRO/
 fi
